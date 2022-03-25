@@ -99,7 +99,7 @@ def signup_patient(request):
             return redirect('signup_patient')
 
     else:
-        return render(request, 'patient/signup_Form/signup.html')
+        return render(request, 'patient/signup_form/signup.html')
 
 
 def sign_in_patient(request):
@@ -118,7 +118,7 @@ def sign_in_patient(request):
                     auth.login(request, user)
 
                     request.session['patientusername'] = user.username
-
+                    print("Inside the sign_in_patient")
                     return redirect('patient_ui')
 
             except:
@@ -158,8 +158,7 @@ def savepdata(request, patientusername):
 def signup_doctor(request):
 
     if request.method == 'GET':
-
-        return render(request, 'doctor/signup_Form/signup.html')
+        return render(request, 'doctor/signup_form/signup.html')
 
     if request.method == 'POST':
 
@@ -234,9 +233,8 @@ def sign_in_doctor(request):
 
                 if (user.doctor.is_doctor == True):
                     auth.login(request, user)
-
+                    print("Inside the sign_in_doctor")
                     request.session['doctorusername'] = user.username
-
                     return redirect('doctor_ui')
 
             except:

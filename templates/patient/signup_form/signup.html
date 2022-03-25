@@ -7,10 +7,36 @@
 <link rel="stylesheet" href="{% static 'patient/signup_form/signup.css' %}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    
+    <style>
+      body{
+
+        background-image: url( "{% static 'homepage/doctor-background.jpg' %}");
+        background-attachment: fixed;
+        {% comment %} opacity: 0.93; {% endcomment %}
+        background-repeat: no-repeat;
+        
+        background-size:cover;
+      
+        }
+        .fa,.btn{
+          background-color:green;
+        }
+      .Form{
+        max-width:500px;
+        margin: 50px auto;
+        border:2px solid black;
+        border-radius:25px;
+        padding:15px;
+        background-color:#e4e6e1;
+        
+      }
+      pre{
+        padding:12px 0px 0px 0px
+      }
+    </style>
 </head>
 <body>
-<form action='signup_patient' method="POST" style="max-height:500px; max-width:450px;  margin:auto;">
+<form action='signup_patient' method="POST" class="Form">
  <h1></b><center>SIGN UP AS PATIENT</center></b></h1><br>
 
   {% csrf_token %}
@@ -41,9 +67,17 @@
     <i class="fa fa-envelope icon"></i>
     <input class="input-field" type="text" placeholder="Email" name="email" required>
   </div>
-   <div class="input-container">
+   {% comment %} <div class="input-container">
     <i class="fa fa-calendar icon"></i>
-    <input class="input-field" type="date" placeholder="Date-of-birth" name="dob" required>
+    <input class="input-field" type="date" placeholder="Date-of-birth" name="dob" required >
+  </div> {% endcomment %}
+
+  <div class="input-container">
+    <span>
+      <pre>Date of birth              </pre>
+    </span>
+    <i class="fa fa-calendar icon"></i>
+    <input class="input-field" type="date" placeholder="Date-of-birth" name="dob" style="width: 50%;" required>
   </div>
   <div class="input-container">
     <i class="fa fa-birthday-cake icon"></i>

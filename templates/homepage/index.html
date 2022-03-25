@@ -46,7 +46,7 @@
 <div class="container mt-5 mb-3" style="width:fit-content;">
       <center>
         <h1>Sign-In  As</h1>
-        </center>
+      </center>
       
       
       <form>
@@ -178,9 +178,7 @@
         <div class="card">
             <div class="card-body text-center">
                 <h5 class="card-title">Dr. MANISH BANSAL </h5>
-                <img  alt="admin" src="{% static 'homepage/c31.jpg' %}" width="200" height="150" class="rounded">
-                <p class="card-text">H.No-1283, Ward No-14, New Anaz Mandi Road, P.O-Radaur, Distt. Yamuna Nagar - 135133, (Haryana).</p>
-                
+                <img  alt="admin" src="{% static 'homepage/c31.jpg' %}" width="200" height="150" class="rounded">            
             </div>
         </div>
     </div>
@@ -189,7 +187,7 @@
             <div class="card-body text-center">
                 <h5 class="card-title">Dr. BANSAL JATINDER PAUL </h5>
                 <img  alt="admin" src="{% static 'homepage/c41.jpg' %}" width="200" height="150" class="rounded">
-                <p class="card-text">Om Niwas Khai Basti, Khai Road, Lehragaga-148031, Distt. Sangrur, Punjab.</p>
+              
                 
             </div>
         </div>
@@ -199,7 +197,7 @@
             <div class="card-body text-center">
                 <h5 class="card-title">DR. RADHIKA SWAROOP</h5>
                 <img  alt="admin" src="{% static 'homepage/s72.jpg' %}" width="200" height="150" class="rounded">
-                <p class="card-text">Swaroop Hospital, 1, Hawa Sarak, Civil Lines, # Jaipur-302 019.</p>
+               
                 
             </div>
         </div>
@@ -224,22 +222,19 @@
 
     <div id="footer" class="card bg-dark text-white">
       <div class="card-body">
-        Contact-
      
     <ul >
      
-      <li >
+      {% comment %} <li >
         <h5 class="mb-1">Email: anujpradhan208@gmail.com</h5>
       </li>
       <li >
         <h5 class="mb-1">Contact no. 9078166555</h5>
-      </li>
-      <li >
+      </li> {% endcomment %}
+      {% comment %} <li >
         <h5 class="mb-1">Address: CET, bbsr</h5>
-        <div class="footer-copyright text-center">© 2020 Copyright:
-          <a href="#"> Predico.com</a>
-        </div>
-      </li>
+      </li> {% endcomment %}
+      <div class="footer-copyright text-center">© 2022 Copyright </div>
       
     </ul>
   </div>

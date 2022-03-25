@@ -1,3 +1,5 @@
+from email.policy import HTTP
+from django.http import HttpRequest
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from chats.models import Chat,Feedback
@@ -50,7 +52,7 @@ def patient_ui(request):
 
         patientusername = request.session['patientusername']
         puser = User.objects.get(username=patientusername)
-
+        print("Inside the patient_ui")
         return render(request,'patient/patient_ui/profile.html' , {"puser":puser})
 
       else :
@@ -72,6 +74,16 @@ def pviewprofile(request, patientusername):
           puser = User.objects.get(username=patientusername)
 
           return render(request,'patient/view_profile/view_profile.html', {"puser":puser})
+
+
+def dviewprofile(request, doctorusername):
+
+    print("Inside the Doctor view",doctorusername)
+
+    if request.method == 'GET':
+          duser = User.objects.get(username=doctorusername)
+          return render(request,'doctor/view_profile/view_profile.html',{'duser':duser})
+          
 
 def pconsultation_history(request):
     
@@ -105,9 +117,7 @@ def dconsultation_history(request):
 def doctor_ui(request):
 
     if request.method == 'GET':
-
+      print("Inside the doctor_ui")
       doctorid = request.session['doctorusername']
-      duser = User.objects.get(username=doctorid)
-
-    
+      duser = User.objects.get(username=doctorid)    
       return render(request,'doctor/doctor_ui/profile.html',{"duser":duser})

@@ -37,12 +37,20 @@
     background-position: 100% 100%;
     background-repeat:   no-repeat;
     background-size:     cover;
-}
+  }
+  .image{
+    width:  5em;
+    height: 4em;
+  }
 
+  .text{
+    font-size: 1.5em;
+    cursor: pointer;
+  }
 
   body{
 
-  background-image: url( "{% static 'homepage/gray.jpg' %}");
+  background-image: url( "{% static 'homepage/mainbackground.jpg' %}");
   background-attachment: fixed;
   opacity: 0.93;
   background-repeat: no-repeat;
@@ -54,16 +62,11 @@
 
 </style>
 
-
-
-
     {% block head %}
 
 
 
     {% endblock %}
-
-
   
   </head>
 
@@ -80,89 +83,84 @@
         </div>
       
       
-          <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #1b405a;">
-              <a class="navbar-brand" href="{% url 'home' %}">SymptoDict </a>
+          <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:  green;">
+              <img src="{%static 'homepage/Transperent.png'%}" alt="loading" class="image">
+              <a class="navbar-brand text" href="{% url 'home' %}">SymptoDict </a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
           <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav ml-auto">
                       <li class="nav-item">
-                          <a class="nav-link" href="{% url 'home' %}">Home</a>
+                          <a class="nav-link text" href="{% url 'home' %}">Home</a>
                       </li>
                       <li class="nav-item">
-                          <a class="nav-link" href="{% url 'home' %}">About</a>
+                          <a class="nav-link text" href="{% url 'home' %}">About</a>
                       </li>
                       <li class="nav-item">
-                          <a class="nav-link" href="{% url 'home' %}">Contact</a>
+                          <a class="nav-link text" href="{% url 'home' %}">Contact</a>
                       </li>
                       
-      
-      
                     {% if user.is_authenticated %}
                       
                       {% if user.patient %}
-      
-                      <li class="nav-item ml-2">
-                      <li class="nav-link" href="{% url 'patient_ui' %}" style="color: rgb(91, 252, 50);">Hello, {{user.patient.name}}</li>
-                      </li>
-                      <li class="nav-item ml-2">
-                          <a class="nav-link" href="{% url 'patient_ui' %}">Profile</a>
-                          </li>
-      
+                        <li class="nav-item ml-2">
+                        <li class="nav-link" href="{% url 'patient_ui' %}" style="color: rgb(91, 252, 50);">Hello, {{user.patient.name}}</li>
+                        </li>
+                        <li class="nav-item ml-2"> <a class="nav-link" href="{% url 'patient_ui' %}">Profile</a> </li>
                       {% endif %}
                       
                       {% if user.doctor  %}
-      
-                      <li class="nav-item ml-2">
-                        <li class="nav-link" href="{% url 'doctor_ui' %}" style="color: rgb(91, 252, 50);">Hello, Dr. {{user.doctor.name}}</li>
-                        </li>
+        
                         <li class="nav-item ml-2">
-                            <a class="nav-link" href="{% url 'doctor_ui' %}">Profile</a>
-                            </li>
-      
-      
+                          <li class="nav-link" href="{% url 'doctor_ui' %}" style="color: rgb(91, 252, 50);">Hello, Dr. {{user.doctor.name}}</li>
+                        </li>
+                          <li class="nav-item ml-2"> <a class="nav-link" href="{% url 'doctor_ui' %}">Profile</a> </li>
                       {% endif %}
 
                       {% if user.is_superuser  %}
-      
-                      <li class="nav-item ml-2">
-                        <li class="nav-link" href="{% url 'admin_ui' %}" style="color: rgb(91, 252, 50);">Admin: {{user.username}}</li>
-                        </li>
                         <li class="nav-item ml-2">
-                            <a class="nav-link" href="{% url 'admin_ui' %}">Profile</a>
-                            </li>
-      
-      
+                          <li class="nav-link" href="{% url 'admin_ui' %}" style="color: rgb(91, 252, 50);">Admin: {{user.username}}</li>
+                          </li>
+                          <li class="nav-item ml-2"> <a class="nav-link" href="{% url 'admin_ui' %}">Profile</a> </li>
                       {% endif %}
       
                       <li class="nav-item ml-2">
       <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#logout-modal" style="color: rgb(247, 190, 188);">Log out</button>
-                        
                       </li>
       
-      
-      
-      
-                      <!-- Small modal -->
-      
-      <div class="modal fade" id="logout-modal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-sm">
-          <div class="modal-content">
-            <div class="modal-header"><h4>Logout <i class="fa fa-lock"></i></h4></div>
-            <div class="modal-body"><i class="fa fa-question-circle"></i><span style="color: rgb(42, 187, 6);">{{user.patient.name}}</span>, Are you sure you want to log-off?</div>
-            <div class="modal-footer"><a href="{% url 'logout' %}" class="btn btn-primary btn-block">Logout</a></div>
-          </div>
-        </div>
-      </div>
+                    <!-- Small modal -->
+                      {% if user.doctor  %}
+                        <div class="modal fade" id="logout-modal" tabindex="-1" role="dialog" aria-hidden="true">
+                          <div class="modal-dialog modal-sm">
+                            <div class="modal-content">
+                              <div class="modal-header"><h4>Logout <i class="fa fa-lock"></i></h4></div>
+                              <div class="modal-body"><i class="fa fa-question-circle"></i><span style="color: rgb(42, 187, 6);">Dr.{{user.doctor.name}}</span>, Are you sure you want to log-off?</div>
+                              <div class="modal-footer"><a href="{% url 'logout' %}" class="btn btn-primary btn-block">Logout</a></div>
+                            </div>
+                          </div>
+                        </div>
+                      {% endif %}
+
+                      {% if user.patient  %}
+                        <div class="modal fade" id="logout-modal" tabindex="-1" role="dialog" aria-hidden="true">
+                          <div class="modal-dialog modal-sm">
+                            <div class="modal-content">
+                              <div class="modal-header"><h4>Logout <i class="fa fa-lock"></i></h4></div>
+                              <div class="modal-body"><i class="fa fa-question-circle"></i><span style="color: rgb(42, 187, 6);">{{user.patient.name}}</span>, Are you sure you want to log-off?</div>
+                              <div class="modal-footer"><a href="{% url 'logout' %}" class="btn btn-primary btn-block">Logout</a></div>
+                            </div>
+                          </div>
+                        </div>
+                      {% endif %}
                       
                       {% else %}
                       
                       <li class="nav-item ml-2">
-                          <a class="nav-link" data-toggle="modal" data-target=".bd-example-modal-lg2">Signup</a>
+                          <a class="nav-link text" data-toggle="modal" data-target=".bd-example-modal-lg2">Signup</a>
                       </li>
                       <li class="nav-item ml-2">
-                          <a class="nav-link" data-toggle="modal" data-target=".bd-example-modal-lg">Signin</a>
+                          <a class="nav-link text" data-toggle="modal" data-target=".bd-example-modal-lg">Signin</a>
                       </li>
                       
                       {% endif %}
@@ -182,7 +180,7 @@
       <div class="modal-content">
      
   <center>
-    <h1>Sign-In  As</h1>
+    <!-- <h1>Sign-In  As</h1> -->
     </center>
   <br><br>
   
