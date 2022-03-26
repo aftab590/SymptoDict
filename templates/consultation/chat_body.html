@@ -6,6 +6,7 @@
 {% if obj.sender == request.user %}
 <div class="outgoing_msgs">
     <div class="sent_msg">
+      
         <span class="time_date"> {{ obj.created }} </span> 
 
         <li class="text-right list-group-item">{{ obj.message }} </li>
